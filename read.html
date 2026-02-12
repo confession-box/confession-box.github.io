@@ -63,8 +63,16 @@
 
       try {
         const data = await fetchRandomConfession();
-        confessionEl.innerText = data.confession || 'No confession text.';
-        if (data.id) addSeenId(data.id);
+        const seenIds = getSeenIds();
+
+        // 🛡️ CLIENT-SIDE SAFEGUARD: if the returned confession has already been seen,
+        // it means the server couldn't find a new one → show "all read" message.
+        if (data.id && seenIds.has(data.id)) {
+          confessionEl.innerText = '💛 You have read every confession. Check back later for more, or submit your own.';
+        } else {
+          confessionEl.innerText = data.confession || 'No confession text.';
+          if (data.id) addSeenId(data.id);
+        }
       } catch (err) {
         console.error('Failed to load confession:', err);
         confessionEl.innerText = 'Something went wrong. Refresh the page.';
@@ -72,8 +80,8 @@
     })();
   </script>
 
-  <!-- GoatCounter analytics -->
-  <script data-goatcounter="https://confessionbox.goatcounter.com/count"
-          async src="//gc.zgo.at/count.js"></script>
+  <!-- Cloudflare Web Analytics -->
+  <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "bb089efcb4b44ed7ae0d0e0fea883f25"}'></script>
+  <!-- End Cloudflare Web Analytics -->
 </body>
 </html>
