@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>confession</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Favicon – gold dot -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Ccircle cx='8' cy='8' r='6' fill='%23D4A437'/%3E%3C/svg%3E">
+</head>
+<body>
+  <a href="index.html" class="site-name">confession box<span>.</span></a>
+  <a href="submit.html" class="submit-corner">submit a confession</a>
+
+  <div class="container">
+    <div id="confessionDisplay" class="confession-card">
+      Loading...
+    </div>
+    <a href="read.html" class="btn-secondary">another</a>
+  </div>
+
+  <script>
+    const STORAGE_KEY = 'confessionBoxSeenIds';
+
+    // ---------- SEEN IDS (sessionStorage) ----------
+    function getSeenIds() {
+      try {
+        const stored = sessionStorage.getItem(STORAGE_KEY);
+        return new Set(stored ? JSON.parse(stored) : []);
+      } catch (e) {
+        console.warn('Failed to parse sessionStorage, resetting');
+        sessionStorage.removeItem(STORAGE_KEY);
+        return new Set();
+      }
+    }
+
+    function addSeenId(id) {
+      if (!id) return;
+      try {
+        const seen = getSeenIds();
+        seen.add(id);
+        sessionStorage.setItem(STORAGE_KEY, JSON.stringify([...seen]));
+      } catch (e) {
+        console.warn('Failed to save to sessionStorage');
+      }
+    }
+
+    // ---------- FETCH RANDOM CONFESSION WITH SEEN HEADER ----------
+    async function fetchRandomConfession() {
+      const seenIds = getSeenIds();
+      const seenArray = Array.from(seenIds);
+
+      const res = await fetch('/api/random', {
+        headers: {
+          'X-Seen-Ids': seenArray.join(',')
+        }
+      });
+
+      if (!res.ok) {
+        throw new Error(`Server error: ${res.status}`);
+      }
+
+      return await res.json();
+    }
+
+    // ---------- LOAD CONFESSION ON PAGE LOAD ----------
+    (async function loadConfession() {
+      const confessionEl = document.getElementById('confessionDisplay');
+      if (!confessionEl) return;
+
+      try {
+        const data = await fetchRandomConfession();
+        confessionEl.innerText = data.confession || 'No confession text.';
+        if (data.id) addSeenId(data.id);
+      } catch (err) {
+        console.error('Failed to load confession:', err);
+        confessionEl.innerText = 'Something went wrong. Refresh the page.';
+      }
+    })();
+
+    // ---------- GOATCOUNTER ANALYTICS (optional) ----------
+    // <script data-goatcounter="https://confessionbox.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+  </script>
+</body>
+</html>

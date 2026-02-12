@@ -1,0 +1,220 @@
+/* ---------------------------------------------
+   CONFESSION BOX – COMPLETE STYLES
+   Digibouquet palette, IBM Plex Mono, Playfair logo
+   --------------------------------------------- */
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Playfair+Display+SC:wght@400;700&display=swap');
+
+:root {
+  --beige: #D8D5BF;
+  --black: #000000;
+  --dusty-pink: #E08A97;
+  --rose-outline: #B85C6C;
+  --gold: #D4A437;
+  --white: #ffffff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--beige);
+  color: var(--black);
+  font-family: 'IBM Plex Mono', monospace;
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.container {
+  max-width: 700px;
+  width: 100%;
+  text-align: center;
+}
+
+/* ---------- TOP LEFT SITE NAME (tiny, monospace, gold dot) ---------- */
+.site-name {
+  position: fixed;
+  top: 24px;
+  left: 24px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--black);
+  border-bottom: 1px solid transparent;
+  padding-bottom: 2px;
+  transition: border-color 0.2s, color 0.2s;
+  z-index: 10;
+}
+
+.site-name:hover {
+  border-bottom-color: var(--black);
+  color: var(--dusty-pink);
+}
+
+.site-name span {
+  color: var(--gold);
+}
+
+/* ---------- TOP RIGHT SUBMIT LINK ---------- */
+.submit-corner {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--black);
+  border-bottom: 1px solid transparent;
+  padding-bottom: 2px;
+  transition: border-color 0.2s, color 0.2s;
+  z-index: 10;
+}
+
+.submit-corner:hover {
+  border-bottom-color: var(--black);
+  color: var(--dusty-pink);
+}
+
+/* ---------- CENTERED LOGO (Playfair, big, gold dot) – HOMEPAGE ONLY ---------- */
+.logo {
+  font-family: 'Playfair Display SC', serif;
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 1rem;
+  color: var(--black);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.logo span {
+  color: var(--gold);
+}
+
+/* ---------- PRIMARY BUTTON (black fill, beige text) ---------- */
+.btn-primary {
+  display: inline-block;
+  background-color: var(--black);
+  color: var(--beige);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 1.2rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  padding: 18px 36px;
+  margin-top: 20px;
+  text-decoration: none;
+  border: 2px solid var(--black);
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.btn-primary:hover {
+  background-color: var(--beige);
+  color: var(--black);
+  border-color: var(--black);
+}
+
+/* ---------- SECONDARY BUTTON (outline, black) ---------- */
+.btn-secondary {
+  display: inline-block;
+  background-color: transparent;
+  color: var(--black);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  padding: 12px 28px;
+  margin: 20px 0;
+  text-decoration: none;
+  border: 1.5px solid var(--black);
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.btn-secondary:hover {
+  background-color: var(--dusty-pink);
+  border-color: var(--dusty-pink);
+  color: var(--black);
+}
+
+/* ---------- CONFESSION CARD ---------- */
+.confession-card {
+  background: var(--white);
+  border: 2px solid var(--rose-outline);
+  padding: 2rem 2rem;
+  margin: 2rem 0;
+  font-size: 1.3rem;
+  font-family: 'IBM Plex Mono', monospace;
+  line-height: 1.7;
+  text-align: left;
+  word-wrap: break-word;
+  box-shadow: 4px 4px 0 rgba(184, 92, 108, 0.2);
+}
+
+/* ---------- SUBMIT FORM ---------- */
+textarea {
+  width: 100%;
+  height: 250px;
+  padding: 20px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 1rem;
+  border: 2px solid var(--black);
+  background: var(--white);
+  margin: 30px 0 20px;
+  resize: vertical;
+  outline: none;
+}
+
+textarea:focus {
+  border-color: var(--rose-outline);
+}
+
+.submit-btn {
+  background-color: var(--black);
+  color: var(--beige);
+  border: 2px solid var(--black);
+  padding: 14px 40px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.submit-btn:hover {
+  background-color: var(--beige);
+  color: var(--black);
+}
+
+/* ---------- BACK LINK (subtle) ---------- */
+.back-link {
+  display: inline-block;
+  margin-top: 30px;
+  color: var(--black);
+  text-decoration: none;
+  border-bottom: 1px solid var(--black);
+  padding-bottom: 2px;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.back-link:hover {
+  border-bottom-color: var(--dusty-pink);
+  color: var(--dusty-pink);
+}
+
+.hidden {
+  display: none;
+}
