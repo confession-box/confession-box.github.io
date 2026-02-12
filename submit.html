@@ -20,6 +20,7 @@
   </div>
 
   <script>
+    const API_BASE = 'https://confession-box-worker.aabed-10.workers.dev';
     const BLOCKED_WORDS = [
       'cock', 'dick', 'nigger', 'cunt', 'whore', 'slut',
       'rape', 'kill', 'bomb', 'terrorist', 'faggot'
@@ -68,7 +69,7 @@
       }
 
       try {
-        const res = await fetch('/api/confessions', {
+        const res = await fetch(`${API_BASE}/api/confessions`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ confession: text })

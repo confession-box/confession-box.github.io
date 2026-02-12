@@ -21,8 +21,8 @@
 
   <script>
     const STORAGE_KEY = 'confessionBoxSeenIds';
+    const API_BASE = 'https://confession-box-worker.aabed-10.workers.dev';
 
-    // ---------- SEEN IDS (sessionStorage) ----------
     function getSeenIds() {
       try {
         const stored = sessionStorage.getItem(STORAGE_KEY);
@@ -45,25 +45,18 @@
       }
     }
 
-    // ---------- FETCH RANDOM CONFESSION WITH SEEN HEADER ----------
     async function fetchRandomConfession() {
       const seenIds = getSeenIds();
       const seenArray = Array.from(seenIds);
 
-      const res = await fetch('/api/random', {
-        headers: {
-          'X-Seen-Ids': seenArray.join(',')
-        }
+      const res = await fetch(`${API_BASE}/api/random`, {
+        headers: { 'X-Seen-Ids': seenArray.join(',') }
       });
 
-      if (!res.ok) {
-        throw new Error(`Server error: ${res.status}`);
-      }
-
+      if (!res.ok) throw new Error(`Server error: ${res.status}`);
       return await res.json();
     }
 
-    // ---------- LOAD CONFESSION ON PAGE LOAD ----------
     (async function loadConfession() {
       const confessionEl = document.getElementById('confessionDisplay');
       if (!confessionEl) return;
@@ -77,9 +70,10 @@
         confessionEl.innerText = 'Something went wrong. Refresh the page.';
       }
     })();
-
-    // ---------- GOATCOUNTER ANALYTICS (optional) ----------
-    // <script data-goatcounter="https://confessionbox.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
   </script>
+
+  <!-- GoatCounter analytics -->
+  <script data-goatcounter="https://confessionbox.goatcounter.com/count"
+          async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>
