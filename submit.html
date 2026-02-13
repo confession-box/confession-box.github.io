@@ -4,12 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>submit a confession</title>
-  <!-- Google Site Verification -->
   <meta name="google-site-verification" content="oxuIReH2Qv-7kGjuGUKYYkPMarR7TUUYBImaCIga6xQ" />
-  <!-- Bing Site Verification -->
   <meta name="msvalidate.01" content="B1C0795DB5B97BEEFD7A34CB18580A64" />
   <link rel="stylesheet" href="style.css">
-  <!-- Favicon – gold dot -->
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Ccircle cx='8' cy='8' r='6' fill='%23D4A437'/%3E%3C/svg%3E">
 </head>
 <body>
@@ -95,7 +92,6 @@
           textarea.value = '';
           removeHighlight();
         } else {
-          // ---------- FRIENDLY 429 MESSAGE ----------
           if (res.status === 429) {
             messageEl.innerText = '💛 Too many confessions today! Try again tomorrow. (Limit is 1,000 per day)';
           } else {
@@ -111,8 +107,10 @@
     document.getElementById('confessionInput').addEventListener('input', removeHighlight);
   </script>
 
-  <!-- Cloudflare Web Analytics -->
   <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "bb089efcb4b44ed7ae0d0e0fea883f25"}'></script>
-  <!-- End Cloudflare Web Analytics -->
+
+  <div style="margin-top: 40px; text-align: center; font-size: 0.7rem; opacity: 0.8;">
+    <a href="https://ko-fi.com/confessionbox" target="_blank" class="footer-link">☕ support</a>
+  </div>
 </body>
 </html>

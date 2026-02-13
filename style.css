@@ -1,7 +1,3 @@
-/* ---------------------------------------------
-   CONFESSION BOX – COMPLETE STYLES
-   Digibouquet palette, IBM Plex Mono, Playfair logo
-   --------------------------------------------- */
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Playfair+Display+SC:wght@400;700&display=swap');
 
 :root {
@@ -38,7 +34,6 @@ body {
   text-align: center;
 }
 
-/* ---------- TOP LEFT SITE NAME (tiny, monospace, gold dot) ---------- */
 .site-name {
   position: fixed;
   top: 24px;
@@ -64,7 +59,6 @@ body {
   color: var(--gold);
 }
 
-/* ---------- TOP RIGHT SUBMIT LINK ---------- */
 .submit-corner {
   position: fixed;
   top: 24px;
@@ -86,7 +80,6 @@ body {
   color: var(--dusty-pink);
 }
 
-/* ---------- CENTERED LOGO (Playfair, big, gold dot) – HOMEPAGE ONLY ---------- */
 .logo {
   font-family: 'Playfair Display SC', serif;
   font-size: 3rem;
@@ -102,7 +95,6 @@ body {
   color: var(--gold);
 }
 
-/* ---------- PRIMARY BUTTON (black fill, beige text) ---------- */
 .btn-primary {
   display: inline-block;
   background-color: var(--black);
@@ -125,7 +117,6 @@ body {
   border-color: var(--black);
 }
 
-/* ---------- SECONDARY BUTTON (outline, black) ---------- */
 .btn-secondary {
   display: inline-block;
   background-color: transparent;
@@ -147,7 +138,6 @@ body {
   color: var(--black);
 }
 
-/* ---------- CONFESSION CARD ---------- */
 .confession-card {
   background: var(--white);
   border: 2px solid var(--rose-outline);
@@ -161,7 +151,6 @@ body {
   box-shadow: 4px 4px 0 rgba(184, 92, 108, 0.2);
 }
 
-/* ---------- SUBMIT FORM ---------- */
 textarea {
   width: 100%;
   height: 250px;
@@ -197,7 +186,6 @@ textarea:focus {
   color: var(--black);
 }
 
-/* ---------- BACK LINK (subtle) ---------- */
 .back-link {
   display: inline-block;
   margin-top: 30px;
@@ -212,6 +200,23 @@ textarea:focus {
 
 .back-link:hover {
   border-bottom-color: var(--dusty-pink);
+  color: var(--dusty-pink);
+}
+
+.footer-link {
+  display: inline-block;
+  color: var(--black);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  padding-bottom: 2px;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.footer-link:hover {
+  border-bottom-color: var(--black);
   color: var(--dusty-pink);
 }
 
