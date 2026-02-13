@@ -3,9 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>submit a confession</title>
+  <title>submit a confession – confession box</title>
+  <meta name="description" content="Submit your anonymous confession. No accounts, no tracking, just truth.">
   <meta name="google-site-verification" content="oxuIReH2Qv-7kGjuGUKYYkPMarR7TUUYBImaCIga6xQ" />
   <meta name="msvalidate.01" content="B1C0795DB5B97BEEFD7A34CB18580A64" />
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://confession-box.github.io/submit.html">
+  <meta property="og:title" content="submit a confession – confession box">
+  <meta property="og:description" content="Submit your anonymous confession. No accounts, no tracking, just truth.">
+  <meta property="og:image" content="https://confession-box.github.io/favicon.svg">
+  <meta property="twitter:card" content="summary">
+  <meta property="twitter:url" content="https://confession-box.github.io/submit.html">
+  <meta property="twitter:title" content="submit a confession – confession box">
+  <meta property="twitter:description" content="Submit your anonymous confession. No accounts, no tracking, just truth.">
+  <meta property="twitter:image" content="https://confession-box.github.io/favicon.svg">
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Ccircle cx='8' cy='8' r='6' fill='%23D4A437'/%3E%3C/svg%3E">
 </head>
@@ -92,8 +103,9 @@
           textarea.value = '';
           removeHighlight();
         } else {
+          // FIXED: Rate limit message now matches the actual rule
           if (res.status === 429) {
-            messageEl.innerText = '💛 Too many confessions today! Try again tomorrow. (Limit is 1,000 per day)';
+            messageEl.innerText = '⏳ You can only confess once per minute. Wait a bit and try again.';
           } else {
             messageEl.innerText = data.error || 'error – try again.';
           }
