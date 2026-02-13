@@ -91,7 +91,12 @@
           textarea.value = '';
           removeHighlight();
         } else {
-          messageEl.innerText = data.error || 'error – try again.';
+          // ---------- FRIENDLY 429 MESSAGE ----------
+          if (res.status === 429) {
+            messageEl.innerText = '💛 Too many confessions today! Try again tomorrow. (Limit is 1,000 per day)';
+          } else {
+            messageEl.innerText = data.error || 'error – try again.';
+          }
         }
       } catch (err) {
         console.error('Network or parse error:', err);
